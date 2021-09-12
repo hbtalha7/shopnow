@@ -1,25 +1,31 @@
-import react,{useState} from 'react'
-import { useDispatch } from 'react-redux'
+import react,{useEffect, useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
+import { signin } from '../actions/useractions'
 import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
 
 export default function Loginscreen(props){
-    const [Email, setEmail] = useState('')
-    const [Password, setPassword] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     const redirect = props.location.search
   ? props.location.search.split('=')[1]
   : '/';
-const loading=false
-const error=false
+
+const userSignin = useSelector((state) => state.userSignin);
+const { userInfo, loading, error } = userSignin;
 
 const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(Email,Password)
-    // dispatch(signin(Email, Password));
+    dispatch(signin(email, password));
     // TODO: sign in action
   };
+  useEffect(() => {
+    if (userInfo) {
+      props.history.push(redirect);
+    }
+  }, [props.history, redirect, userInfo]);
     return (
         <div>
         <form className="form" onSubmit={submitHandler}>
