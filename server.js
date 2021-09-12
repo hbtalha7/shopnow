@@ -4,6 +4,7 @@ import mongoose from 'mongoose'
 import itemsRouter from './backend/routers/itemsrouter.js'
 import userRouter from './backend/routers/userRouter.js';
 const app=express();
+const __dirname = path.resolve();
 const port=process.env.PORT || 5000;
 const CONNECTION_URL='mongodb+srv://demo:demo123@cluster0.mtf0e.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
@@ -23,12 +24,12 @@ console.log("production Hi")
 app.use('/api/items',itemsRouter)
 app.use('/api/users',userRouter)
 
-// if(process.env.NODE_ENV.trim()==="production"){
+if(process.env.NODE_ENV.trim()==="production"){
     console.log("production Hi")
     app.use(express.static("frontend/build"))
     app.get("*",(req,res)=>{
         res.sendFile(path.resolve(__dirname,'frontend','build','index.html'))
     })
-// }
+}
 
 
