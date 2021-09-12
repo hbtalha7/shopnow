@@ -27,7 +27,7 @@ app.use('/api/users',userRouter)
 if(process.env.NODE_ENV.trim()==="production"){
     console.log("production Hi")
     app.use(express.static("frontend/build"))
-    app.get("/start",(req,res)=>{
+    app.get("*",(req,res)=>{
         res.sendFile(path.resolve(__dirname,'frontend','build','index.html'))
     })
 }
