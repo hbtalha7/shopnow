@@ -16,10 +16,10 @@ mongoose.connect(CONNECTION_URL,{useNewUrlParser: true,
         })
     )
 
-app.get('/',(req,res)=>{
-    res.send('Server is ready'+ process.env.NODE_ENV.trim() +1)
-    console.log(process.env.NODE_ENV)
-})
+// app.get('/',(req,res)=>{
+//     res.send('Server is ready'+ process.env.NODE_ENV.trim() +1)
+//     console.log(process.env.NODE_ENV)
+// })
 console.log("production Hi")
 app.use('/api/items',itemsRouter)
 app.use('/api/users',userRouter)
@@ -27,7 +27,7 @@ app.use('/api/users',userRouter)
 if(process.env.NODE_ENV.trim()==="production"){
     console.log("production Hi")
     app.use(express.static("frontend/build"))
-    app.get("*",(req,res)=>{
+    app.get("/",(req,res)=>{
         res.sendFile(path.resolve(__dirname,'frontend','build','index.html'))
     })
 }
