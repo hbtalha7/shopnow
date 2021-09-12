@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "engines": {
+    "node": "14.x"
+  },
+  "scripts": {
+    "client-install":"npm install --prefix frontend",
+    "start": "node server.js",
+    "server":"nodemon server.js",
+    "client":"npm start --prefix frontend",
+    "dev":"concurrently \"npm run server \" \"npm run client\"",
+    "heroku-postbuild": "cd frontend && NPM_CONFIG_PRODUCTION=false npm install && npm run build"
+
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "mongodb": "^4.1.1",
+    "mongoose": "^6.0.5",
+    "nodemon": "^2.0.12"
+  }
+}
