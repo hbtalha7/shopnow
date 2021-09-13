@@ -1,8 +1,17 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { signout } from "../actions/useractions";
 import "./navbar.css";
 
 export default function Navbar() {
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+  const dispatch=useDispatch()
+  const signoutHandler = () => {
+    console.log('hi signout')
+    dispatch(signout());
+  };
   return (
     <nav>
       <div className="Band">
@@ -30,12 +39,37 @@ export default function Navbar() {
           <li>
             <Link to="/about">Service</Link>
           </li>
-          <li>
-            <Link to="/login">Login</Link>
+          {/* <li>
+            <Link to="/login" >Login</Link>
           </li>
           <li>
-            <Link to="/about">SignUp</Link>
-          </li>
+            <Link to="/signup">SignUp</Link>
+          </li> */}
+          {/* <li> */}
+          {userInfo ? (
+              <div className="dropdown">
+                <Link to="#">
+                  {userInfo.name} <i className="fa fa-caret-down"></i>{' '}
+                </Link>
+                <ul className="dropdown-content">
+                  <li>
+                    <Link to="#signout" onClick={signoutHandler}>
+                      Sign Out
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <ul>
+              <li>
+              <Link to="/login" >Login</Link>
+            </li>
+            <li>
+              <Link to="/signup">SignUp</Link>
+            </li>
+            </ul>
+            )}
+          {/* </li> */}
         </ul>
       </div>
     </nav>

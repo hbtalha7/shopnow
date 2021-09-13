@@ -6,6 +6,7 @@ import Additemscreen from "./screens/Additemscreen";
 import Homescreen from "./screens/Homescreen";
 import Itemscreen from "./screens/Itemscreen";
 import Loginscreen from "./screens/Loginscreen";
+import RegisterScreen from "./screens/Registerscreen";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <main>
           <Route path="/item/:id" component={Itemscreen}></Route>
           <Route path="/login/" component={Loginscreen}></Route>
+          <Route path="/signup/" component={RegisterScreen}></Route>
           <Route path="/additem/" component={Additemscreen}></Route>
           <Route exact path="/" component={Homescreen}></Route>
         </main>

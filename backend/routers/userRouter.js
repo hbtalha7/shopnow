@@ -13,6 +13,7 @@ userRouter.get(
     res.send({ createdUsers });
   })
 );
+export default userRouter;
 userRouter.post(
   "/signin",
   expressasynchandler(async (req, res) => {
@@ -33,4 +34,32 @@ userRouter.post(
   })
 );
 
-export default userRouter;
+userRouter.post(
+  '/register',
+  expressasynchandler(async (req, res) => {
+    console.log(req.body.name)
+    const user = new User({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    });
+    const createdUser = await user.save();
+    res.send({
+      // _id: createdUser._id,
+      name: createdUser.name,
+      email: createdUser.email,
+      isAdmin: createdUser.isAdmin,
+    });
+  })
+);
+
+userRouter.get(
+  '/seed',
+  expressasynchandler(async(req,res)=>{
+      await User.remove({})
+      const createitems=await User.insertMany(data.users);
+      res.send(createitems)
+  })
+)
+
+

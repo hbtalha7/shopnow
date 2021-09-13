@@ -1,6 +1,7 @@
 import {applyMiddleware, combineReducers, compose, createStore} from 'redux'
 import { itemslistReducer, itmedetailsReducer } from './reducers/itemsreducers';
 import thunk from 'redux-thunk'
+import { userRegisterReducer, userSigninReducer } from './reducers/userReducers';
 
 const initialState = {
     userSignin: {
@@ -11,12 +12,15 @@ const initialState = {
 }
 const reducer=combineReducers({
     itemsListsto:itemslistReducer,
-    itemdetail:itmedetailsReducer
+    itemdetail:itmedetailsReducer,
+    userSignin: userSigninReducer,
+    userRegister: userRegisterReducer,
 })
 const composeenhancer=window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store=createStore(
-    initialState,
+    
     reducer,
+    initialState,
     composeenhancer(applyMiddleware(thunk))
 );
 
