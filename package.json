@@ -8,16 +8,16 @@
     "node": "14.x"
   },
   "scripts": {
-    "client-install":"npm install --prefix frontend",
+    "client-install": "npm install --prefix frontend",
     "start": "nodemon server.js",
-    "client":"npm start --prefix frontend",
-    "dev":"concurrently \"npm run server \" \"npm run client\"",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server \" \"npm run client\"",
     "heroku-postbuild": "cd frontend && NPM_CONFIG_PRODUCTION=false npm install && npm run build"
-
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
     "mongodb": "^4.1.1",
