@@ -52,6 +52,11 @@ export default function Navbar() {
                   {userInfo.name} <i className="fa fa-caret-down"></i>{' '}
                 </Link>
                 <ul className="dropdown-content">
+                {userInfo.isAdmin?(<li>
+                    <Link to="/additem" >
+                      Sale items
+                    </Link>
+                  </li>):null}
                   <li>
                     <Link to="#signout" onClick={signoutHandler}>
                       Sign Out

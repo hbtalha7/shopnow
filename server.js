@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import itemsRouter from "./backend/routers/itemsrouter.js";
 import userRouter from "./backend/routers/userRouter.js";
 import dotenv from 'dotenv'
+import orderRouter from "./backend/routers/orderrouter.js";
 
 dotenv.config();
 const app = express();
@@ -30,6 +31,7 @@ mongoose
 console.log("production Hi");
 app.use("/api/items", itemsRouter);
 app.use("/api/users", userRouter);
+app.use('/api/orders', orderRouter);
 
 if (process.env.NODE_ENV === "production") {
   console.log("production Hi");

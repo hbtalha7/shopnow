@@ -22,6 +22,10 @@ const itemId=props.match.params.id
     dispatch(itemdetails(itemId))
   },[dispatch,itemId])  
 
+  const addToCartHandler = () => {
+    props.history.push(`/cart/${itemId}?qty=${qty}`);
+  };
+
   return (     
     
     <div>
@@ -93,8 +97,8 @@ const itemId=props.match.params.id
                         </div>
                       </li>
                       <li>
-                        <button
-                        //   onClick={()}
+                      <button
+                          onClick={addToCartHandler}
                           className="primary block"
                         >
                           Add to Cart

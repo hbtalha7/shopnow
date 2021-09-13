@@ -3,10 +3,15 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import "./index.css";
 import Additemscreen from "./screens/Additemscreen";
+import CartScreen from "./screens/Cartscreen";
 import Homescreen from "./screens/Homescreen";
 import Itemscreen from "./screens/Itemscreen";
 import Loginscreen from "./screens/Loginscreen";
+import OrderScreen from "./screens/OrderScreen";
+import PaymentMethodScreen from "./screens/PaymentMethodScreen";
+import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import RegisterScreen from "./screens/Registerscreen";
+import ShippingAddressScreen from "./screens/ShippingAddressScreen";
 
 function App() {
   return (
@@ -16,10 +21,15 @@ function App() {
           <Navbar></Navbar>
         </header>
         <main>
+        <Route path="/cart/:id?" component={CartScreen}></Route>
           <Route path="/item/:id" component={Itemscreen}></Route>
           <Route path="/login/" component={Loginscreen}></Route>
-          <Route path="/signup/" component={RegisterScreen}></Route>
+          <Route path="/signup/" component={RegisterScreen}></Route>          
+          <Route path="/shipping" component={ShippingAddressScreen}></Route>
           <Route path="/additem/" component={Additemscreen}></Route>
+          <Route path="/payment" component={PaymentMethodScreen}></Route>
+          <Route path="/placeorder" component={PlaceOrderScreen}></Route>
+          <Route path="/order/:id" component={OrderScreen}></Route>
           <Route exact path="/" component={Homescreen}></Route>
         </main>
         <footer>
