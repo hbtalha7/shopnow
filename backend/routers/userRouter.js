@@ -42,6 +42,7 @@ userRouter.post(
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
+      isAdmin: req.body.isAdmin,
     });
     const createdUser = await user.save();
     res.send({

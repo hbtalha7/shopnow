@@ -25,7 +25,8 @@ const [merchant, setmerchant] = useState(false)
     if (password !== confirmPassword) {
       alert('Password and confirm password are not match');
     } else {
-      dispatch(register(name, email, password,merchant? true:false));
+      var isAdmin=merchant? true:false
+      dispatch(register(name, email, password,isAdmin));
     }
   };
   useEffect(() => {
@@ -124,7 +125,7 @@ const [merchant, setmerchant] = useState(false)
             type="file"
             id="ShopProof"
             placeholder="ShopProof"
-            required
+            // required
           ></input>
         </div></div>
         ):null}

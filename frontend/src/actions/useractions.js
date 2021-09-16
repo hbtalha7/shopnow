@@ -1,7 +1,7 @@
 import { USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_SIGNIN_FAIL, USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNOUT } from "../constants/userconstants"
 import axios from 'axios'
 
-export const signin=(email,password)=>async(dispatch)=>{
+export const signin=(email,password )=>async(dispatch)=>{
     dispatch({
         type:USER_SIGNIN_REQUEST,payload:{email,password}
     })
@@ -24,13 +24,14 @@ export const signin=(email,password)=>async(dispatch)=>{
     }
 }
 
-export const register = (name, email, password) => async (dispatch) => {
+export const register = (name, email, password,isAdmin) => async (dispatch) => {
     dispatch({ type: USER_REGISTER_REQUEST, payload: { email, password } });
     try {
       const { data } = await axios.post('/api/users/register', {
         name,
         email,
         password,
+        isAdmin
       });
       console.log(data)
       dispatch({ type: USER_REGISTER_SUCCESS, payload: data });

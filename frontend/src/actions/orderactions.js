@@ -42,9 +42,7 @@ export const detailsOrder = (orderId) => async (dispatch, getState) => {
     userSignin: { userInfo },
   } = getState();
   try {
-    const { data } = await Axios.get(`/api/orders/${orderId}`, {
-      headers: { Authorization: `Bearer ${userInfo.token}` },
-    });
+    const { data } = await Axios.get(`/api/orders/${orderId}`);
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     const message =
@@ -63,9 +61,7 @@ export const payOrder = (order, paymentResult) => async (
     userSignin: { userInfo },
   } = getState();
   try {
-    const { data } = Axios.put(`/api/orders/${order._id}/pay`, paymentResult, {
-      headers: { Authorization: `Bearer ${userInfo.token}` },
-    });
+    const { data } = Axios.put(`/api/orders/${order._id}/pay`, paymentResult);
     dispatch({ type: ORDER_PAY_SUCCESS, payload: data });
   } catch (error) {
     const message =
