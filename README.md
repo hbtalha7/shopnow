@@ -1,6 +1,11 @@
 # shopnow
+# hosted link: https://shopnow8.herokuapp.com/
+
+
 #first signUp with selecting merchant account or signin (email:admin@example.com and password:1234)
+
 #then add the product which you want UserName-->saleitem
+
 #then signout
 
 #create a signup without selecting merchant account or signin (email:user@example.com and password:1234)
