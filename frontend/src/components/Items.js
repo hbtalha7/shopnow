@@ -7,7 +7,7 @@ export default function Items(props) {
   return (
     <div key={key} className="card">
       <Link to={`/item/${item._id}`}>
-        <img className="medium" src={item.image} alt={item.name} />
+        <img className="medium" src={`/api/image/${item.image}`} alt={item.name} />
       </Link>
       <div className="card-body">
         <Link to={`/item/${item._id}`}>

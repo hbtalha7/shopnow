@@ -6,6 +6,9 @@ import {
   ITEM_DETAILS_FAIL,
   ITEM_DETAILS_REQUEST,
   ITEM_DETAILS_SUCCESS,
+  ITEM_ADD_FAIL,
+  ITEM_ADD_SUCCESS,
+  ITEM_ADD_REQUEST
 } from "../constants/itemconstants";
 import data from '../data'
 export const itemslist = () => async(dispatch) => {
@@ -51,3 +54,27 @@ export const itemdetails=(item_id)=>async(dispatch)=>{
             })       
     }
 }
+
+export const itemregister = (title, imageId, price,descrip,qty,seller) => async (dispatch) => {
+  dispatch({ type: ITEM_ADD_REQUEST, payload: { title, descrip } });
+  try {
+    const { data } = await axios.post('/api/items/additem', {
+      title,
+      imageId,
+      price,
+      descrip,
+      qty,
+      seller
+    });
+    console.log(data)
+    dispatch({ type: ITEM_ADD_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: ITEM_ADD_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};

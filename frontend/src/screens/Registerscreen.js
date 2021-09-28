@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { register } from '../actions/useractions';
+import { register, sellerregister } from '../actions/useractions';
 
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
@@ -11,6 +11,10 @@ export default function RegisterScreen(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [sellername, setsellerName] = useState('');
+  const [selleraddress, setselleraddress] = useState('');
+  const [sellershopname, setsellershopName] = useState('');
+
 const [merchant, setmerchant] = useState(false)
   const redirect = props.location.search
     ? props.location.search.split('=')[1]
@@ -24,9 +28,13 @@ const [merchant, setmerchant] = useState(false)
     e.preventDefault();
     if (password !== confirmPassword) {
       alert('Password and confirm password are not match');
-    } else {
+    } else if(!merchant && sellername==='') {
       var isAdmin=merchant? true:false
       dispatch(register(name, email, password,isAdmin));
+    }else{
+      var isAdmin=merchant? true:false
+      var proof=''
+      dispatch(sellerregister(name, email, password,isAdmin,sellername,selleraddress,sellershopname,proof));
     }
   };
   useEffect(() => {
@@ -98,6 +106,7 @@ const [merchant, setmerchant] = useState(false)
             type="text"
             id="ShopName"
             placeholder="ShopName"
+            onChange={(e) => setsellershopName(e.target.value)}
             required
           ></input>
         </div>
@@ -107,6 +116,7 @@ const [merchant, setmerchant] = useState(false)
             type="text"
             id="ShopOwner"
             placeholder="ShopOwner"
+            onChange={(e) => setsellerName(e.target.value)}
             required
           ></input>
         </div>
@@ -116,6 +126,7 @@ const [merchant, setmerchant] = useState(false)
             type="text"
             id="ShopAddress"
             placeholder="ShopAddress"
+            onChange={(e) => setselleraddress(e.target.value)}
             required
           ></input>
         </div>

@@ -18,7 +18,7 @@ const data = {
       name: "MacBook Pro",
       category: "Laptop",
       image:
-        "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp16touch-space-select-201911?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1572825197207",
+        "61529a6a367611e9041afa4f",
       price: 199900,
       brand: "Apple",
       rating: 5,
@@ -31,7 +31,7 @@ const data = {
       name: "iPhone 12 Pro",
       category: "phone",
       image:
-        "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-pro-family-hero?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1604021663000",
+        "61529a9f0c15cbeb8da89bab",
       price: 119900,
       brand: "Apple",
       rating: 4.5,
@@ -44,7 +44,7 @@ const data = {
       name: "iPad",
       category: "tab",
       image:
-        "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-2020-hero-landing?wid=372&hei=606&fmt=jpeg&qlt=95&.v=1598913494000",
+        "61529ac32429c3ef9ffd5a71",
       price: 29900,
       brand: "Apple",
       rating: 4.5,
@@ -57,7 +57,7 @@ const data = {
       name: "Apple Watch",
       category: "Watch",
       image:
-        "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/alu-space-sport-black-2up_gps_varend?wid=470&hei=556&fmt=png-alpha&.v=1594321427000",
+        "61529aec3ed192107ae806a7",
       price: 20900,
       brand: "Apple",
       rating: 4,
@@ -65,19 +65,7 @@ const data = {
       description: "best Watch",
       countInStock: 23,
     },
-    {
-      //_id:5,
-      name: "HomePod mini",
-      category: "headset",
-      image:
-        "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/homepod-mini-select-202010?wid=934&hei=441&fmt=jpeg&qlt=95&.v=1601427724000",
-      price: 9900,
-      brand: "Apple",
-      rating: 3,
-      numReviews: 1540,
-      description: "best HomePod mini",
-      countInStock: 23,
-    },
+    
   ],
 };
 export default data;

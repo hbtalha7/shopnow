@@ -36,7 +36,7 @@ const itemId=props.match.params.id
         <Link to="/">Back to Home</Link>
         <div className="row top">
         <div className="col1">
-          <img className="large" src={(item.image)} alt={item.name}></img>
+          <img className="large" src={`/api/image/${item.image}`} alt={item.name}></img>
         </div>
   
         <div className="col2">
@@ -55,6 +55,9 @@ const itemId=props.match.params.id
             </li>
             <li>
               <h1>${item.price}</h1>
+            </li>
+            <li>
+              <h1>Sell By :{item.seller}</h1>
             </li>
           </ul>
         </div>

@@ -48,7 +48,7 @@ export default function Navbar() {
           {/* <li> */}
           {userInfo ? (
               <div className="dropdown">
-                <Link to="#" style={{paddingLeft: 13, color:'white',textDecoration: 'none'}}>
+                <Link to="#">
                   {userInfo.name} <i className="fa fa-caret-down"></i>{' '}
                 </Link>
                 <ul className="dropdown-content">

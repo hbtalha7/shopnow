@@ -5,6 +5,9 @@ const {
   ITEM_DETAILS_FAIL,
   ITEM_DETAILS_REQUEST,
   ITEM_DETAILS_SUCCESS,
+  ITEM_ADD_FAIL,
+  ITEM_ADD_SUCCESS,
+  ITEM_ADD_REQUEST,
 }=require( "../constants/itemconstants");
 
 export const itemslistReducer = (
@@ -39,6 +42,19 @@ export const itmedetailsReducer = (
     case ITEM_DETAILS_SUCCESS:
       return { loading: false, item: action.payload };
     case ITEM_DETAILS_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const itemRegisterReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ITEM_ADD_REQUEST:
+      return { loading: true };
+    case ITEM_ADD_SUCCESS:
+      return { loading: false, item: action.payload };
+    case ITEM_ADD_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

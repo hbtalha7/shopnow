@@ -26,6 +26,7 @@ userRouter.post(
           name: user.name,
           email: user.email,
           isAdmin: user.isAdmin,
+          sellername: user.sellershopname,
         });
         return;
       }
@@ -50,6 +51,29 @@ userRouter.post(
       name: createdUser.name,
       email: createdUser.email,
       isAdmin: createdUser.isAdmin,
+    });
+  })
+);
+userRouter.post(
+  '/adminregister',
+  expressasynchandler(async (req, res) => {
+    console.log(req.body.name)
+    const user = new User({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      isAdmin: req.body.isAdmin,
+      sellername: req.body.sellername,
+    selleraddess: req.body.selleraddess,
+    sellershopname: req.body.sellershopname,
+    proof: req.body.proof,
+    });
+    const createdUser = await user.save();
+    res.send({
+      // _id: createdUser._id,
+      name: createdUser.name,
+      email: createdUser.email,
+      sellername: createdUser.sellershopname,
     });
   })
 );

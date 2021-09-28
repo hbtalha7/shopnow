@@ -1,6 +1,7 @@
 import react from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Upload from "./components/upload";
 import "./index.css";
 import Additemscreen from "./screens/Additemscreen";
 import CartScreen from "./screens/Cartscreen";
@@ -29,6 +30,7 @@ function App() {
           <Route path="/additem/" component={Additemscreen}></Route>
           <Route path="/payment" component={PaymentMethodScreen}></Route>
           <Route path="/placeorder" component={PlaceOrderScreen}></Route>
+          <Route path="/upload" component={Upload}></Route>
           <Route path="/order/:id" component={OrderScreen}></Route>
           <Route exact path="/" component={Homescreen}></Route>
         </main>

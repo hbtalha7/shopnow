@@ -3,6 +3,7 @@ import path from "path";
 import mongoose from "mongoose";
 import itemsRouter from "./backend/routers/itemsrouter.js";
 import userRouter from "./backend/routers/userRouter.js";
+import imageRoutes from "./backend/routers/imagerouter.js";
 import dotenv from 'dotenv'
 import orderRouter from "./backend/routers/orderrouter.js";
 
@@ -29,6 +30,7 @@ mongoose
 //     console.log(process.env.NODE_ENV)
 // })
 console.log("production Hi");
+app.use('/api/image', imageRoutes);
 app.use("/api/items", itemsRouter);
 app.use("/api/users", userRouter);
 app.use('/api/orders', orderRouter);

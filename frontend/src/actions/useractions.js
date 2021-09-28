@@ -48,6 +48,31 @@ export const register = (name, email, password,isAdmin) => async (dispatch) => {
     }
   };
   
+  export const sellerregister = (name, email, password,isAdmin,sellername,selleraddess,sellershopname,proof) => async (dispatch) => {
+    dispatch({ type: USER_REGISTER_REQUEST, payload: { email, password } });
+    try {
+      const { data } = await axios.post('/api/users/adminregister', {
+        name,
+        email,
+        password,
+        isAdmin,sellername,selleraddess,sellershopname,proof
+      });
+      console.log(data)
+      dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
+      dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
+      localStorage.setItem('userInfo', JSON.stringify(data));
+    } catch (error) {
+      dispatch({
+        type: USER_REGISTER_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
+  
+
   export const signout = () => (dispatch) => {
     localStorage.removeItem('userInfo');
     localStorage.removeItem('cartItems');
